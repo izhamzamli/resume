@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Resume</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    main {
+      margin: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    #skills {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #skills li {
+      display: inline-block;
+      background-color: #f4f4f4;
+      color: #333;
+      padding: 8px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Name</h1>
+    <p>Job Title</p>
+  </header>
+
+  <main>
+    <h1>Summary</h1>
+    <p id="summary"></p>
+
+    <h1>Education</h1>
+    <ul id="education">
+      <!-- Dynamically generated education section -->
+    </ul>
+
+    <h1>Experience</h1>
+    <ul id="experience">
+      <!-- Dynamically generated experience section -->
+    </ul>
+
+    <h1>Skills</h1>
+    <ul id="skills">
+      <!-- Dynamically generated skills section -->
+    </ul>
+  </main>
+
+  <script>
+    // Resume data (replace with your own information)
+    const resumeData = {
+      summary: "I am a highly motivated and accomplished professional with a passion for continuous learning and growth...",
+      education: [
+        {
+          university: "University Name",
+          degree: "Degree, Major",
+          graduationYear: "Graduation Year",
+          description: "Description of your educational background, relevant coursework, projects, or academic achievements. Highlight any honors, awards, or distinctions."
+        }
+      ],
+      experience: [
+        {
+          company: "Company Name",
+          jobTitle: "Job Title",
+          description: "Description of your responsibilities, accomplishments, and key projects."
+        }
+      ],
+      skills: ["Skill 1", "Skill 2", "Skill 3"] // Add your skills here
+    };
+
+    // Populate resume sections with data
+    document.getElementById("summary").innerText = resumeData.summary;
+
+    const educationList = document.getElementById("education");
+    resumeData.education.forEach(edu => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<b>${edu.university}</b><br><i>${edu.degree}</i><br>${edu.graduationYear}<br>${edu.description}`;
+      educationList.appendChild(listItem);
+    });
+
+    const experienceList = document.getElementById("experience");
+    resumeData.experience.forEach(exp => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<b>${exp.company}</b> - ${exp.jobTitle}<br>${exp.description}`;
+      experienceList.appendChild(listItem);
+    });
+
+    const skillsList = document.getElementById("skills");
+    resumeData.skills.forEach(skill => {
+      const listItem = document.createElement("li");
+      listItem.innerText = skill;
+      skillsList.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
